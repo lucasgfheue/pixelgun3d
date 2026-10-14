@@ -42,6 +42,45 @@ public class ModEntities {
                             .updateInterval(2)
                             .build("proyectil_acido"));
 
+    public static final DeferredHolder<EntityType<?>, EntityType<ThrownKnife>> KNIFE =
+            ENTITIES.register("cuchillo_arrojadizo", () ->
+                    EntityType.Builder.<ThrownKnife>of(ThrownKnife::new, MobCategory.MISC)
+                            .sized(0.5f, 0.5f)
+                            .clientTrackingRange(4)
+                            .updateInterval(20)
+                            .build("cuchillo_arrojadizo"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<com.example.armasreales.train.TrainCar>> TRAIN_CAR =
+            ENTITIES.register("tren_vagon", () ->
+                    EntityType.Builder.<com.example.armasreales.train.TrainCar>of(
+                                    com.example.armasreales.train.TrainCar::new, MobCategory.MISC)
+                            .sized(3.0f, 3.2f)
+                            .clientTrackingRange(12)
+                            .updateInterval(1)
+                            .noSave()
+                            .fireImmune()
+                            .build("tren_vagon"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<TankEntity>> TANK =
+            ENTITIES.register("tanque", () ->
+                    EntityType.Builder.<TankEntity>of(TankEntity::new, MobCategory.MISC)
+                            // La hitbox de Minecraft es siempre cuadrada y no gira: 2x2 de base (el ancho
+                            // del tanque) y 2 de alto. El casco mide 3 de largo, así que sobresale 0.5
+                            // por delante y por detrás de la hitbox.
+                            .sized(2.0f, 2.0f)
+                            .clientTrackingRange(12)
+                            .updateInterval(1)
+                            .fireImmune()
+                            .build("tanque"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<TankShell>> TANK_SHELL =
+            ENTITIES.register("obus_tanque", () ->
+                    EntityType.Builder.<TankShell>of(TankShell::new, MobCategory.MISC)
+                            .sized(0.5f, 0.5f)
+                            .clientTrackingRange(10)
+                            .updateInterval(2)
+                            .build("obus_tanque"));
+
     public static final DeferredHolder<EntityType<?>, EntityType<BeamEntity>> BEAM =
             ENTITIES.register("rayo", () ->
                     EntityType.Builder.<BeamEntity>of(BeamEntity::new, MobCategory.MISC)
